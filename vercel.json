@@ -9,37 +9,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "server.js",
-      "headers": {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type, Authorization"
-      }
+      "dest": "server.js"
     }
   ]
 }
-
-
-**Ctrl+S** dabao! Phir:
-```
-c{
-  "version": 2,
-  "builds": [
-    {
-      "src": "server.js",
-      "use": "@vercel/node"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "server.js",
-      "headers": {
-        "Access-Control-Allow-Origin": "*",
-        "Access-Control-Allow-Methods": "GET,POST,PUT,DELETE,OPTIONS",
-        "Access-Control-Allow-Headers": "Content-Type, Authorization"
-      }
-    }
-  ]
-}
-```
