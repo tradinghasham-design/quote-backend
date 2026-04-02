@@ -6,21 +6,18 @@ const User = require('../models/User');
 
 router.post('/register', async (req, res) => {
   try {
-    console.log('Register:', req.body);
     const { name, email, password } = req.body;
     const hashed = await bcrypt.hash(password, 10);
     const user = new User({ name, email, password: hashed });
     await user.save();
     res.json({ message: 'User registered!' });
   } catch (err) {
-    console.log('Error:', err.message);
     res.status(500).json({ error: err.message });
   }
 });
 
 router.post('/login', async (req, res) => {
   try {
-    console.log('Login:', req.body);
     const { email, password } = req.body;
     const user = await User.findOne({ email });
     if (!user) return res.status(404).json({ error: 'User not found' });
@@ -29,7 +26,6 @@ router.post('/login', async (req, res) => {
     const token = jwt.sign({ id: user._id }, 'secret123');
     res.json({ token, name: user.name });
   } catch (err) {
-    console.log('Error:', err.message);
     res.status(500).json({ error: err.message });
   }
 });
